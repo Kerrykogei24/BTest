@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="container">
+        <h5>List Of User Details</h5>
+        <div *ngIf='currentUser;' class="">
+
+            <a class="nav-link icon-c">First Name: <span class="material-icons"></span>{{currentUser.first_name}}</a>
+            <a class="nav-link icon-c">Username :<span class="material-icons"></span> {{currentUser.last_name}}</a>
+            <a class="nav-link icon-c">Email :<span class="material-icons"></span> {{currentUser.email}}</a>
+            <a class="nav-link icon-c">Phone_Number: <span class="material-icons"></span>{{currentUser.phone_number}}</a>
+            <a class="nav-link icon-c">Language: <span class="material-icons"></span>{{currentUser.language}}</a>
+
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="posts">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 card-auto" *ngFor='let post of posts'>
+                                <div class="card p-3 text-left h-100">
+                                    <blockquote class="blockquote mb-0">
+                                        <p>{{post.description}}</p>
+                                        <footer class="blockquote-footer">
+                                            <small class="text-muted">
+                        <cite title="Source Title">{{post.title}}</cite>
+                      </small>
+                                        </footer>
+                                    </blockquote>
+                                    <p class="card-text"><small class="text-muted">Date published {{post.pub_date | date:'short'}}</small>
+                                    </p>
+                                    <a routerLink='/post/{{post.id}}'>Read</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        <li *ngFor='let pageInd of paginator' class="page-item"><a class="page-link p-link" (click)='getData(pageInd)'>{{pageInd}}</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <div *ngIf='!posts?.length' class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-info">
+                                    No Post At The Moment
+                                    <a routerLink='/new-post'>Fill The Form</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

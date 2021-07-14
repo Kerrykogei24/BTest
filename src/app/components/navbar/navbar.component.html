@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <a class="navbar-brand" routerLink='/'>Busara Survey</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link custom-link" routerLink='/surveyform'>Survey Form</a>
+            </li>
+        </ul>
+        <div *ngIf='currentUser;else login' class="form-inline">
+            <a class="nav-link icon-c"> <span class="material-icons">person</span>{{currentUser.username}}</a>
+            <button class="btn btn-danger my-2 my-sm-0 login-btn" (click)='logoutUser()' type="submit">Logout</button>
+        </div>
+        <ng-template #login>
+            <div *ngIf='!currentUser' class="form-inline my-2 my-lg-0">
+                <button routerLink='/login' class="btn btn-warning my-2 my-sm-0 login-btn" type="submit">Login</button>
+            </div>
+        </ng-template>
+    </div>
+</nav>

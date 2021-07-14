@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="new-post">
+          <div *ngIf='errorMsg' class="alert alert-danger text-center">
+            {{errorMsg}}
+          </div>
+          <div class="header">
+            <h5>Publish a new post</h5>
+          </div>
+
+          <form *ngIf='formData?.id' novalidate #postForm='ngForm' (ngSubmit)='onSubmit(postForm)' action="">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input #title='ngModel' required [(ngModel)]='formData.title' name="title" type="text"
+                class="form-control" [class.is-invalid]='title?.errors?.required && !(title.valid || title.pristine)'
+                id="title" aria-describedby="titleHelp" placeholder="Title">
+              <div *ngIf='title?.errors?.required && !(title.valid || title.pristine)' class="invalid-feedback">
+                Required
+              </div>
+              <small id="titleHelp" class="form-text text-muted">A short title</small>
+            </div>
+
+            <!-- description -->
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea cols="30" rows="4" #description='ngModel' required [(ngModel)]='formData.description'
+                name="description" type="text" class="form-control"
+                [class.is-invalid]='description?.errors?.required && !(description.valid || description.pristine)'
+                id="description" aria-describedby="descriptionHelp" placeholder="Description"></textarea>
+              <div *ngIf='description?.errors?.required && !(description.valid || description.pristine)'
+                class="invalid-feedback">
+                Required
+              </div>
+              <small id="descriptionHelp" class="form-text text-muted">Post short description</small>
+            </div>
+
+            <!-- content -->
+
+            <div class="form-group">
+              <label for="content">Post Content</label>
+              <textarea cols="30" rows="9" #content='ngModel' required [(ngModel)]='formData.content' name="content"
+                type="text" class="form-control"
+                [class.is-invalid]='content?.errors?.required && !(content.valid || content.pristine)' id="content"
+                aria-describedby="contentHelp" placeholder="Content"></textarea>
+              <div *ngIf='content?.errors?.required && !(content.valid || content.pristine)' class="invalid-feedback">
+                Required
+              </div>
+            </div>
+            <div>
+              <button class="btn btn-warning" [disabled]='postForm.invalid' type="submit">Save and publish</button>
+              <span *ngIf='errorMsg' class="small bg-danger span-error">{{errorMsg}}!!</span>
+              <span *ngIf='successMsg' class="small bg-success span-error">{{successMsg}}</span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>

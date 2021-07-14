@@ -1,0 +1,46 @@
+.form {
+  margin: 3em;
+  border: 1px solid rgb(202, 202, 85, 0.4);
+  border-radius: 4px;
+}
+
+
+form {
+  margin: 2em;
+}
+
+.sign-up-btn button {
+  width: 60%;
+  color: white;
+}
+
+.sign-up-btn {
+  text-align: center;
+}
+
+.v-pass {
+  cursor: pointer;
+}
+
+.header {
+  text-align: center;
+  font-weight: 450;
+  font: bold;
+  margin: 0.6em;
+}
+
+.custom-err {
+  text-align: center;
+  margin: 0.5em;
+}
+
+
+@media screen and (max-width:417px) {
+  form {
+    margin: 0.1em;
+  }
+
+  .form {
+    margin: 0.5em;
+  }
+}

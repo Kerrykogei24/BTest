@@ -1,0 +1,16 @@
+.header {
+  text-align: center;
+  font-weight: 400;
+  font: bold;
+}
+
+.span-error {
+  margin-left: 0.6em;
+  color: white;
+}
+
+
+.lorem{
+    display: inline;
+    float: right;
+}

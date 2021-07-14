@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10 post">
+            <div class="card">
+                <div class="header">
+                    <h2>{{post?.title}}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4>{{post?.description}}</h4>
+                    </div>
+
+                    <div class="card-content">
+                        <p>{{post?.content}}</p>
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="btn btn-outline-danger" (click)='deletePost(post.id)'>Delete</button>
+
+                        <button class="btn btn-outline-warning" routerLink='/edit-post/{{post?.id}}'>Edit</button>
+                    </div>
+                    <div class="errors">
+                        <div *ngIf='errorMsg' class="alert alert-danger">
+                            <p class="small">{{errorMsg}}</p>
+                        </div>
+                        <div *ngIf='successMsg' class="alert alert-success">
+                            <p class="small">Post deleted successfully, redirecting...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

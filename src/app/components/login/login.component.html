@@ -1,0 +1,59 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form">
+                <div class="header">
+                    <h5>Welcome, Login</h5>
+                    <a href="/">Home</a>
+                </div>
+                <div *ngIf='errorMessage' class="alert alert-danger custom-err">
+                    {{errorMessage}}
+                </div>
+
+                <div *ngIf='successMsg' class="alert alert-success custom-err">
+                    {{successMsg}}
+                </div>
+
+                <form enctype="application/x-www-form-urlencoded" novalidate #loginForm='ngForm' (ngSubmit)='loginUser(loginForm)'>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input #username='ngModel' required [(ngModel)]='formData.username' name="username" type="text" class="form-control" [class.is-invalid]='username?.errors?.required && !(username.valid || username.pristine)' id="username" aria-describedby="usernameHelp"
+                            placeholder="Username">
+                        <div *ngIf='username?.errors?.required && !(username.valid || username.pristine)' class="invalid-feedback">
+                            Required
+                        </div>
+                        <small id="usernameHelp" class="form-text text-muted">Username used while registering</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <div class="input-group input-control">
+                            <input #password='ngModel' required [(ngModel)]='formData.password' name="password" [type]="passwordInputType?'password':'text'" class="form-control" [class.is-invalid]='password?.errors?.required && !(password.valid || password.pristine)' id="password"
+                                placeholder="Password">
+
+                            <div (click)='togglePasswordInpType()' class="input-group-append">
+                                <span class="input-group-text v-pass">
+                  <span class="material-icons">
+                    {{hide ? 'visibility_off' : 'visibility'}}
+                  </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sign-up-btn">
+                        <button type="submit" [disabled]='loginForm.invalid' class="btn btn-warning">Login</button>
+                        <div class="font-small small">
+                            <p>Dont have an account?
+                                <a routerLink='/register'></a>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

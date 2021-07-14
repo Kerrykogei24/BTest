@@ -1,0 +1,20 @@
+.login-btn {
+  color: white;
+  margin-right: 2em;
+  padding: 0.6em;
+}
+
+.login-btn:hover {
+  box-shadow: 5px 0 5px 0;
+}
+
+.custom-link:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(185, 185, 123);
+  transition: 300ms;
+}
+
+
+.icon-c  span{
+  vertical-align: middle;
+}
